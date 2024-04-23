@@ -5,38 +5,55 @@ Using gradient descent method to solve the IR-Drop problem in large-scale displa
 ## IR-Drop problem in displays
 
 Display panel can be modeled as a discrete gird system with parasitic resistence and non-linear voltage-controlled current source:
-![IR-Drop](https://github.com/YunTing-k/IRDropGD/blob/master/img/1.png?raw=true)
+<!-- ![IR-Drop](https://github.com/YunTing-k/IRDropGD/blob/master/img/1.png?raw=true) -->
+<p align="center">
+<img width="70%"  height="70%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/1.png">
+</p>
 
 Points can be classified into tree types:
 <!-- ![Grid Type](https://github.com/YunTing-k/IRDropGD/blob/master/img/2.png?raw=true){:height="70%" width="70%"} -->
-<img align="center" width="70%"  height="70%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/2.png">
+<p align="center">
+<img width="50%"  height="50%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/2.png">
+</p>
 
 Inner point's grid current can be derived by the four nearby grid's voltage:
 ![func1](https://github.com/YunTing-k/IRDropGD/blob/master/img/3.png?raw=true)
 where $𝐺_(𝑖,𝑗)=𝑔_((𝑖,𝑗)(𝑖−1,𝑗))+ 𝑔_((𝑖,𝑗)(𝑖,𝑗−1))+ 𝑔_((𝑖,𝑗)(𝑖,𝑗+1))+ 𝑔_((𝑖,𝑗)(𝑖+1,𝑗))$ is the sum of conductance of nearby points, $𝑔_((𝑖,𝑗)(𝑖−1,𝑗))$ is the conductance between grid(i, j) and grid(i-1, j).
 Pixel's current can be derived by $𝑉_(𝑖,𝑗)$:
 <!-- ![func2](https://github.com/YunTing-k/IRDropGD/blob/master/img/4.png?raw=true){:height="40%" width="40%"} -->
-<img align="center" width="40%"  height="40%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/4.png">
+<p align="center">
+<img width="40%"  height="40%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/4.png">
+</p>
 
 The whole system need to reach a steady state with the grid current equals the pixel current. Therefore, one equation can be derived:
 <!-- ![func3](https://github.com/YunTing-k/IRDropGD/blob/master/img/5.png?raw=true){:height="70%" width="70%"} -->
-<img align="center" width="70%"  height="70%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/5.png">
+<p align="center">
+<img width="70%"  height="70%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/5.png">
+</p>
 
 Similarly, for four corner points we have:
 <!-- ![func4](https://github.com/YunTing-k/IRDropGD/blob/master/img/6.png?raw=true){:height="90%" width="90%"} -->
-<img align="center" width="90%"  height="90%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/6.png">
+<p align="center">
+<img width="90%"  height="90%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/6.png">
+</p>
 
 for four points on four edges, we have:
 <!-- ![func5](https://github.com/YunTing-k/IRDropGD/blob/master/img/7.png?raw=true){:height="80%" width="80%"} -->
-<img align="center" width="80%"  height="80%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/7.png">
+<p align="center">
+<img width="80%"  height="80%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/7.png">
+</p>
 
 With M-row, N-col panels, MN equation can be derived. To apply the GD method, loss is defined as follow:
 <!-- ![func6](https://github.com/YunTing-k/IRDropGD/blob/master/img/8.png?raw=true){:height="35%" width="35%"} -->
-<img align="center" width="35%"  height="35%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/8.png">
+<p align="center">
+<img width="35%"  height="35%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/8.png">
+</p>
 
 Grad can be derived by auotgrad in pytorch:
 <!-- ![func7](https://github.com/YunTing-k/IRDropGD/blob/master/img/9.png?raw=true){:height="50%" width="50%"} -->
-<img align="center" width="50%"  height="50%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/9.png">
+<p align="center">
+<img width="50%"  height="50%" src="https://github.com/YunTing-k/IRDropGD/blob/master/img/9.png">
+</p>
 
 ## Boundary condition fixation
 
